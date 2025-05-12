@@ -1,6 +1,4 @@
 # BaseTelegramBot
-![CI](https://github.com/XEQU4/BaseTelegramBot/actions/workflows/ci.yml/badge.svg)
-
 ![Python](https://img.shields.io/badge/Python-3.13-blue)
 ![Aiogram](https://img.shields.io/badge/Aiogram-3.20.0+-green)
 ![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-blue)
@@ -72,7 +70,6 @@ yarl==1.20.0
 - ✅ Scheduler (APScheduler)
 - ✅ Structured Logging with Loguru for easy debugging
 - ✅ Environment Variables usage for secure configuration (.env)
-- ✅ CI Integration with GitHub Actions (pytest runs on every push)
 - ✅ Testing Suite (basic unit tests with pytest-asyncio)
 
 
