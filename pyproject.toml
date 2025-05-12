@@ -13,3 +13,7 @@ dependencies = [
     "pytest-asyncio>=0.26.0",
     "sqlalchemy>=2.0.40",
 ]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["errors*", "filters*", "database*", "logger*", "handlers*", "bot_media*"]
