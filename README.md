@@ -5,7 +5,8 @@
 ![Aiogram](https://img.shields.io/badge/Aiogram-3.20.0+-green)
 ![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-blue)
 
-<Тут напиши некое описания, о том что это проект который был создан заказчику на фрилансе и т.п.>
+A Telegram bot developed for a freelance client to manage user categories through Telegram.
+Built with asynchronous PostgreSQL integration and designed with scalability in mind.
 
 ## 🔧 Tech Stack
 
@@ -59,14 +60,22 @@ yarl==1.20.0
 
 ## 🔄 Features
 
-<Тут напиши некий функционал по тому что я отправлял тебе весь чат, вот пример:
-- ✅ `/start` command support for **admins** and **users**
-- ✅ Admins managed through `.env`
-- ✅ **Localization** support (`en`, `ru`) with scalability
-- ✅ Reply and Inline **keyboards** management
-- ✅ Integrated **task scheduler** using Redis and DI (via `apscheduler-di`)
-- ✅ User data stored in **PostgreSQL**, tables auto-created
->
+- ✅ /start command that shows different menus depending on user role (admin or regular user)
+- ✅ Admin Panel via bot commands (admin ID is configured in .env)
+- ✅ User Interaction Handling using ReplyKeyboards and InlineKeyboards
+- ✅ Dynamic Category Management:\
+       Admins can create, edit, and delete categories\
+       Users can browse and select categories
+- ✅ State Management with Finite State Machine (FSM) for smoother multi-step flows
+- ✅ PostgreSQL Database to store users and categories
+- ✅ Auto Database Migration — tables are created automatically if missing
+- ✅ Scheduler (APScheduler) to automate future tasks (optional for future use)
+- ✅ Structured Logging with Loguru for easy debugging
+- ✅ Multi-language support (e.g., English, Russian), ready for localization scaling
+- ✅ Environment Variables usage for secure configuration (.env)
+- ✅ Ready for Docker: Dockerfile + docker-compose support
+- ✅ CI Integration with GitHub Actions (pytest runs on every push)
+- ✅ Testing Suite (basic unit tests with pytest-asyncio)
 
 
 ## 📚 .env File
@@ -150,7 +159,8 @@ Basic tests are included using `pytest` and `pytest-asyncio`.
 
 ## ✅ Project Status
 
-<Напиши типа проект был создан с целью дальнейшего апгрейда и поэтому можно встретить не нужные файлы и функций>
+The project was initially created for a freelance client with potential future expansion in mind.
+You may encounter placeholder modules or extra utility functions prepared for scaling and upgrades.
 
 ## 📝 License
 
