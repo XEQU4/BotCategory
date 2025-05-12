@@ -1,0 +1,43 @@
+name: BotCategory CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 🐍 Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: ⚡ Install uv from official script
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: 📦 Create venv & install dependencies
+        run: |
+          uv venv
+          uv pip install .
+          uv pip install pytest pytest-asyncio
+
+      - name: 🧹 Lint with ruff
+        run: |
+          uv pip install ruff
+          uv run ruff check .
+
+      - name: 🛠️ Prepare .env
+        run: cp .env.example .env
+
+      - name: 🧪 Run tests if present
+        run: |
+          if [ -d tests ]; then
+            uv run pytest
+          else
+            echo "No tests found — skipping."
+          fi

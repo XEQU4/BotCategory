@@ -1,0 +1,19 @@
+{
+    "start_handling.py": {
+        "command_start_handling": "Ready to hit the road tonight?"
+    },
+    "cities.py": {
+        "country": "Choose your country:",
+        "city": "Choose your city:"
+    },
+    "tags.py": {
+        "tags1": "Select tags to sort cars\n\nSelected tags:\n{}",
+        "tags2": "Selected tags have been reset!"
+    },
+    "catalog.py": {
+        "catalog": "Number of cars: <b>{}</b>"
+    },
+    "car_info.py": {
+        "car_info": "Shall we go back?"
+    }
+}
