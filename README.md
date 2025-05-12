@@ -69,11 +69,9 @@ yarl==1.20.0
 - ✅ State Management with Finite State Machine (FSM) for smoother multi-step flows
 - ✅ PostgreSQL Database to store users and categories
 - ✅ Auto Database Migration — tables are created automatically if missing
-- ✅ Scheduler (APScheduler) to automate future tasks (optional for future use)
+- ✅ Scheduler (APScheduler)
 - ✅ Structured Logging with Loguru for easy debugging
-- ✅ Multi-language support (e.g., English, Russian), ready for localization scaling
 - ✅ Environment Variables usage for secure configuration (.env)
-- ✅ Ready for Docker: Dockerfile + docker-compose support
 - ✅ CI Integration with GitHub Actions (pytest runs on every push)
 - ✅ Testing Suite (basic unit tests with pytest-asyncio)
 
