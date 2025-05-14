@@ -51,8 +51,12 @@ async def tags1(query_message: Union[CallbackQuery, Message], state: FSMContext)
     tags_text = await create_tags_text(car_tags)
     text = (await get_client_text("tags.py", "tags1")).format(tags_text)
 
-    indexes = await set_old_index_and_new_index_tags(query_message, count, old_index)
-    await state.update_data(old_index=indexes[1])
+    indexes = await set_old_index_and_new_index_tags(query_message, count, old_index) or [0, 0]
+
+    if len(indexes) > 1:
+        await state.update_data(old_index=indexes[1])
+    else:
+        await state.update_data(old_index=None)
 
     markup = await IKB.tags(tags, *indexes)
 
@@ -78,22 +82,26 @@ async def tags2(query: CallbackQuery, state: FSMContext):
 
     old_index = data['old_index']
 
-    indexes = await set_old_index_and_new_index_tags(query, count, old_index)
-
     await query.answer()
 
-    if indexes is None:
-        return
+    indexes = await set_old_index_and_new_index_tags(query, count, old_index) or [0, 0]
 
-    await state.update_data(old_index=indexes[1])
+    if len(indexes) > 1:
+        await state.update_data(old_index=indexes[1])
+    else:
+        await state.update_data(old_index=None)
 
     markup = await IKB.tags(tags, *indexes)
 
-    var = await query.message.edit_reply_markup(reply_markup=await IKB.tags(tags, *indexes))
+    if query.message.reply_markup != markup:
+        new_message = await query.message.edit_reply_markup(reply_markup=markup)
+        await add_msg_ids([new_message.message_id], state)
+    else:
+        await add_msg_ids([query.message.message_id], state)
 
     await state.update_data(markup=markup)
 
-    await add_msg_ids([var.message_id], state)
+    await add_msg_ids([query.message.message_id], state)
 
 
 @router.callback_query(F.data.startswith("tag:"), IsClient())

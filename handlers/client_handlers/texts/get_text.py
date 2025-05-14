@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 
 async def get_client_text(file_name: str, func: str, index: int = None) -> str:
@@ -10,7 +11,8 @@ async def get_client_text(file_name: str, func: str, index: int = None) -> str:
     :param index: text index in list
     :return: text
     """
-    with open(r"handlers\client_handlers\texts\texts.json", encoding="utf-8") as file:
+    path = Path("handlers") / "client_handlers" / "texts" / "texts.json"
+    with open(path, encoding="utf-8") as file:
         data = json.load(file)
 
     if index is None:

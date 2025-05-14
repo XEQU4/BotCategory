@@ -11,9 +11,15 @@ dependencies = [
     "dotenv>=0.9.9",
     "loguru>=0.7.3",
     "pytest-asyncio>=0.26.0",
+    "setuptools>=80.4.0",
     "sqlalchemy>=2.0.40",
+    "wheel>=0.45.1",
 ]
 
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["errors*", "filters*", "database*", "logger*", "handlers*", "bot_media*"]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"

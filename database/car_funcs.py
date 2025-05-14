@@ -146,7 +146,7 @@ async def add_car_to_db(car_id: Union[int, str],
             await conn.execute(
                 query, str(car_id), city, name, str(year), services, caption, new_medias, new_tags, contacts, str(new_days), views, country)
 
-    logger.info("[DATABASE] A NEW CAR ADDED TO THE DATABASE - ID: %s", car_id)
+    logger.info("[DATABASE] A NEW CAR ADDED TO THE DATABASE - ID: %s", str(car_id))
 
 
 async def set_car(car_id: Union[int, str],

@@ -28,7 +28,6 @@ class IsClient(Filter):
     """Check if the user is a regular client."""
 
     async def __call__(self, query_or_message: Union[Message, CallbackQuery]) -> bool:
-        cars_ids = await select_all_cars_ids()
         chat_id = query_or_message.chat.id if isinstance(query_or_message, Message) else query_or_message.message.chat.id
 
-        return chat_id not in cars_ids and chat_id != ADMIN_ID and str(chat_id)[0] != "-"
+        return chat_id != ADMIN_ID and str(chat_id)[0] != "-"

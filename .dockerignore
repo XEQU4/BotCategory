@@ -1,0 +1,53 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+venv/
+env/
+.venv/
+.env/
+.env.example
+
+# Ignore development/config files
+*.log
+*.sqlite3
+*.sqlite
+*.db
+
+# Ignore editor/IDE configs
+.idea/
+.vscode/
+*.swp
+
+# Ignore Git
+.git/
+.gitignore
+.gitattributes
+
+# Ignore Docker internal
+.dockerignore
+
+# Ignore tests artifacts
+htmlcov/
+coverage.xml
+*.cover
+*.py,cover
+.cache/
+nosetests.xml
+test-results/
+botcategory.egg-info/
+
+# Ignore nodejs artifacts (in case frontend or assets appear)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Other
+.DS_Store
+Thumbs.db
+assets/
+LICENSE
+README.md

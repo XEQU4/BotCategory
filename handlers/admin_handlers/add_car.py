@@ -207,7 +207,7 @@ async def addcar5(message: Message, state: FSMContext):
             reply_markup=await RKB.can()
         )
 
-    await state.update_data(addcar5=message.md_text)
+    await state.update_data(addcar5=message.html_text)
     await state.set_state(FSMAdmin.addcar6)
 
     text = "<i>Please write a detailed description for the car profile:</i>"
@@ -232,7 +232,7 @@ async def addcar6(message: Message, state: FSMContext):
             reply_markup=await RKB.can()
         )
 
-    await state.update_data(addcar6=message.md_text)
+    await state.update_data(addcar6=message.html_text)
     await state.update_data(media=[])
     await state.set_state(FSMAdmin.addcar7)
 
@@ -384,7 +384,14 @@ async def addcar10(query: CallbackQuery, state: FSMContext):
 
     tag = ":".join(query.data.split(":")[1:-1])
 
-    text_tags = list(map(lambda tag_: tag_.split("-  ", 1)[1], query.message.text.split("\n")[1:]))
+    text_tags = list(
+        map(
+            lambda tag_: tag_.split("-  ", 1)[1] if "-  " in tag_ else None,
+            query.message.text.split("\n")[1:]
+        )
+    )
+
+    text_tags = [tag for tag in text_tags if tag is not None]
 
     tags = data['addcar10']
     tags_db = await get_tags()
@@ -425,7 +432,7 @@ async def addcar11(message: Message, state: FSMContext):
             reply_markup=await RKB.can()
         )
 
-    await state.update_data(addcar11=message.md_text)
+    await state.update_data(addcar11=message.html_text)
 
     text = "<i>How many days should this car remain active in the catalog?\n\n" \
            "(<b>If skipped, it will be active for 30 days by default.</b>)</i>"
@@ -502,7 +509,7 @@ async def addcar13(query: CallbackQuery, state: FSMContext):
 
         media_group = await create_media_group(medias)
         text = TEXT_CAPTION_CAR.replace("<b>", "*").replace("</b>", "*").format(name, country, city, year, tags,
-                                                                                  caption)
+                                                                                caption)
 
         message_ids_list = []
 
